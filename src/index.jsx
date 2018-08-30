@@ -11,16 +11,17 @@ import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import { Helmet } from 'react-helmet';
 
+import configuration from './config';
 import EnterpriseApp from './containers/EnterpriseApp';
 import NotFoundPage from './containers/NotFoundPage';
 import SupportPage from './containers/SupportPage';
 import Header from './containers/Header';
 import Footer from './containers/Footer';
-import LoginPage from './containers/LoginPage';
 import EnterpriseIndexPage from './containers/EnterpriseIndexPage';
 import PrivateRoute from './containers/PrivateRoute';
 import LogoutRedirect from './components/LogoutRedirect';
 import store from './data/store';
+import AuthService from './data/services/AuthService';
 import './index.scss';
 
 const history = createHistory();
@@ -50,4 +51,8 @@ const AppWrapper = () => (
   </Provider>
 );
 
-ReactDOM.render(<AppWrapper />, document.getElementById('root'));
+if (AuthService.isAuthenticated()) {
+  ReactDOM.render(<AppWrapper />, document.getElementById('root'));
+} else {
+  window.location = configuration.LMS_BASE_URL + '/login?next=https%3A%2F%2Ftygra.sandbox.edx.org';
+}

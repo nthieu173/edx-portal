@@ -20,6 +20,10 @@ class AuthService {
     refreshAccessTokenEndpoint,
   ];
 
+  static isAuthenticated() {
+    return !!cookies.get(accessTokenCookieName);
+  }
+
   static login(email, password) {
     return httpClient.get(loginEndpoint)
       .then((response) => {
