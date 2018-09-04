@@ -10,18 +10,16 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import { Helmet } from 'react-helmet';
+import { PrivateRoute } from '@edx/frontend-auth-client';
 
-import configuration from './config';
+import apiClient from './data/apiClient';
 import EnterpriseApp from './containers/EnterpriseApp';
 import NotFoundPage from './containers/NotFoundPage';
 import SupportPage from './containers/SupportPage';
 import Header from './containers/Header';
 import Footer from './containers/Footer';
 import EnterpriseIndexPage from './containers/EnterpriseIndexPage';
-import PrivateRoute from './containers/PrivateRoute';
-import LogoutRedirect from './components/LogoutRedirect';
 import store from './data/store';
-import AuthService from './data/services/AuthService';
 import './index.scss';
 
 const history = createHistory();
@@ -37,11 +35,27 @@ const AppWrapper = () => (
           />
           <Header />
           <Switch>
-            <Route exact path="/logout" component={LogoutRedirect} />
             <Route exact path="/support" component={SupportPage} />
-            <PrivateRoute exact path="/enterprises" component={EnterpriseIndexPage} />
-            <PrivateRoute path="/:enterpriseSlug" component={EnterpriseApp} />
-            <PrivateRoute exact path="/" component={EnterpriseIndexPage} />
+            <PrivateRoute
+              exact
+              path="/enterprises"
+              component={EnterpriseIndexPage}
+              authenticatedAPIClient={apiClient}
+              redirect={process.env.BASE_URL}
+            />
+            <PrivateRoute
+              path="/:enterpriseSlug"
+              component={EnterpriseApp}
+              authenticatedAPIClient={apiClient}
+              redirect={process.env.BASE_URL}
+            />
+            <PrivateRoute
+              exact
+              path="/"
+              component={EnterpriseIndexPage}
+              authenticatedAPIClient={apiClient}
+              redirect={process.env.BASE_URL}
+            />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />
@@ -51,8 +65,8 @@ const AppWrapper = () => (
   </Provider>
 );
 
-if (AuthService.isAuthenticated()) {
+if (apiClient.isAuthenticated()) {
   ReactDOM.render(<AppWrapper />, document.getElementById('root'));
 } else {
-  window.location = configuration.LMS_BASE_URL + '/login?next=https%3A%2F%2Ftygra.sandbox.edx.org';
+  apiClient.login(process.env.BASE_URL);
 }

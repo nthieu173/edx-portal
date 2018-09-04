@@ -1,7 +1,7 @@
 import qs from 'query-string';
 
+import apiClient from '../apiClient';
 import configuration from '../../config';
-import httpClient from '../../httpClient';
 
 class LmsApiService {
   static baseUrl = configuration.LMS_BASE_URL;
@@ -16,12 +16,12 @@ class LmsApiService {
       block_types_filter: 'course,chapter,sequential,vertical',
     };
     const outlineUrl = `${this.baseUrl}/api/courses/v1/blocks/?${qs.stringify(options)}`;
-    return httpClient.get(outlineUrl);
+    return apiClient.get(outlineUrl);
   }
 
   static fetchPortalConfiguration(enterpriseSlug) {
     const portalConfigurationUrl = `${this.baseUrl}/enterprise/api/v1/enterprise-customer-branding/${enterpriseSlug}/`;
-    return httpClient.get(portalConfigurationUrl);
+    return apiClient.get(portalConfigurationUrl);
   }
 
   static fetchEnterpriseList(options) {
@@ -32,7 +32,7 @@ class LmsApiService {
       ...options,
     };
     const enterpriseListUrl = `${this.baseUrl}/enterprise/api/v1/enterprise-customer/with_access_to/?${qs.stringify(queryParams)}`;
-    return httpClient.get(enterpriseListUrl);
+    return apiClient.get(enterpriseListUrl);
   }
 }
 

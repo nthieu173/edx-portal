@@ -34,7 +34,6 @@ class EnterpriseList extends React.Component {
     const options = qs.parse(this.props.location.search);
     this.clearPortalConfiguration();
     this.getEnterpriseList(formatTableOptions(options));
-    this.props.getLocalUser();
   }
 
   componentDidUpdate(prevProps) {
@@ -167,7 +166,6 @@ EnterpriseList.defaultProps = {
 EnterpriseList.propTypes = {
   getEnterpriseList: PropTypes.func.isRequired,
   clearPortalConfiguration: PropTypes.func.isRequired,
-  getLocalUser: PropTypes.func.isRequired,
   enterprises: PropTypes.shape({
     count: PropTypes.number,
     num_pages: PropTypes.number,

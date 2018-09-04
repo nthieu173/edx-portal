@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import EnterpriseList from '../../components/EnterpriseList';
 import fetchEnterpriseList from '../../data/actions/enterpriseList';
 import { clearPortalConfiguration } from '../../data/actions/portalConfiguration';
-import { getLocalUser } from '../../data/actions/authentication';
 
 const mapStateToProps = state => ({
   loading: state.enterpriseList.loading,
@@ -16,9 +15,6 @@ const mapDispatchToProps = dispatch => ({
   },
   clearPortalConfiguration: () => {
     dispatch(clearPortalConfiguration());
-  },
-  getLocalUser: () => {
-    dispatch(getLocalUser());
   },
 });
 

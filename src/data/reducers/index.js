@@ -5,16 +5,18 @@ import courseEnrollments from './courseEnrollments';
 import dashboardAnalytics from './dashboardAnalytics';
 import enterpriseList from './enterpriseList';
 import portalConfiguration from './portalConfiguration';
-import authentication from './authentication';
+
+const identityReducer = (state) => { return { ...state }; };
 
 const rootReducer = combineReducers({
+  authConfig: identityReducer,
+  authentication: identityReducer,
   routerReducer,
   courseOutline,
   courseEnrollments,
   enterpriseList,
   dashboardAnalytics,
   portalConfiguration,
-  authentication,
 });
 
 export default rootReducer;

@@ -1,7 +1,7 @@
 import qs from 'query-string';
 
+import apiClient from '../apiClient';
 import config from '../../config';
-import httpClient from '../../httpClient';
 
 class EnterpriseDataApiService {
   // TODO: This should access the data-api through the gateway instead of direct
@@ -14,17 +14,17 @@ class EnterpriseDataApiService {
       ...options,
     };
     const enrollmentsUrl = `${this.enterpriseBaseUrl}${enterpriseId}/enrollments/?${qs.stringify(queryParams)}`;
-    return httpClient.get(enrollmentsUrl);
+    return apiClient.get(enrollmentsUrl);
   }
 
   static fetchCourseEnrollmentsCsv(enterpriseId) {
     const csvUrl = `${this.enterpriseBaseUrl}${enterpriseId}/enrollments.csv/?no_page=true`;
-    return httpClient.get(csvUrl);
+    return apiClient.get(csvUrl);
   }
 
   static fetchDashboardAnalytics(enterpriseId) {
     const analyticsUrl = `${this.enterpriseBaseUrl}${enterpriseId}/enrollments/overview/`;
-    return httpClient.get(analyticsUrl);
+    return apiClient.get(analyticsUrl);
   }
 }
 

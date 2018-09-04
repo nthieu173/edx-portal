@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Dropdown } from '@edx/paragon';
 
 import Img from '../Img';
-import LinkWrapper from '../LinkWrapper';
 import EdxLogo from '../../images/edx-logo.png';
 import './Header.scss';
 
@@ -29,7 +28,7 @@ const Header = (props) => {
         {email && <Dropdown
           title={email}
           menuItems={[
-            <LinkWrapper to="/logout">Logout</LinkWrapper>,
+            <a href="https://panthro.sandbox.edx.org/logout">Logout</a>,
           ]}
         />}
       </nav>
