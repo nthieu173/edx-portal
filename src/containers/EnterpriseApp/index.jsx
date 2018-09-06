@@ -13,6 +13,9 @@ import { fetchEnterpriseList } from '../../data/actions/enterpriseList';
 import { setPortalConfiguration } from '../../data/actions/portalConfiguration';
 import { getLocalUser } from '../../data/actions/authentication';
 
+import { removeTrailingSlash } from '../../utils';
+import { features } from '../../config';
+
 class EnterpriseApp extends React.Component {
   componentDidMount() {
     const { enterpriseSlug } = this.props.match.params;
@@ -41,10 +44,6 @@ class EnterpriseApp extends React.Component {
     return enterpriseList.find(enterprise => enterprise.slug === enterpriseSlug);
   }
 
-  removeTrailingSlash(path) {
-    return path.replace(/\/$/, '');
-  }
-
   renderError(error) {
     return (
       <ErrorPage
@@ -67,10 +66,14 @@ class EnterpriseApp extends React.Component {
           <Redirect
             exact
             from={baseUrl}
-            to={`${this.removeTrailingSlash(baseUrl)}/admin`}
+            to={`${removeTrailingSlash(baseUrl)}/admin/learners`}
           />
           <Route exact path={`${baseUrl}/courses/:courseId`} component={CoursewarePage} />
-          <Route exact path={`${baseUrl}/admin`} component={AdminPage} />
+          {features.DASHBOARD_V2 ? (
+            <Route exact path={`${baseUrl}/admin/learners/:slug?`} component={AdminPage} />
+          ) : (
+            <Route exact path={`${baseUrl}/admin/learners`} component={AdminPage} />
+          )}
           <Route exact path={`${baseUrl}/support`} component={SupportPage} />
           <Route path="" component={NotFoundPage} />
         </Switch>

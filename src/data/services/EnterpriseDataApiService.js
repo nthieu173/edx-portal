@@ -1,12 +1,12 @@
 import qs from 'query-string';
 
-import config from '../../config';
+import { configuration } from '../../config';
 import httpClient from '../../httpClient';
 import { getAccessToken } from '../../utils';
 
 class EnterpriseDataApiService {
   // TODO: This should access the data-api through the gateway instead of direct
-  static enterpriseBaseUrl = `${config.DATA_API_BASE_URL}/enterprise/api/v0/enterprise/`;
+  static enterpriseBaseUrl = `${configuration.DATA_API_BASE_URL}/enterprise/api/v0/enterprise/`;
 
   static fetchCourseEnrollments(enterpriseId, options) {
     const queryParams = {

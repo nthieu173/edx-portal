@@ -127,7 +127,7 @@ describe('<EnterpriseList />', () => {
           />
         </MemoryRouter>
       ));
-      const expectedRedirect = <Redirect to="/enterprise-99/admin" />;
+      const expectedRedirect = <Redirect to="/enterprise-99/admin/learners" />;
       expect(wrapper.containsMatchingElement(expectedRedirect)).toEqual(true);
     });
   });

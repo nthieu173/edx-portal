@@ -24,9 +24,12 @@ const getAccessToken = () => {
   return cookies.get('access_token');
 };
 
+const removeTrailingSlash = path => path.replace(/\/$/, '');
+
 export {
   formatTableOptions,
   formatTimestamp,
   formatPercentage,
   getAccessToken,
+  removeTrailingSlash,
 };

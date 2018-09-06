@@ -11,7 +11,9 @@ exports[`<EnterpriseList /> renders correctly calls getEnterpriseList, clearPort
       <div
         className="col-sm-12 col-md"
       >
-        <h1>
+        <h1
+          className={null}
+        >
           Enterprise List
         </h1>
       </div>
@@ -116,7 +118,9 @@ exports[`<EnterpriseList /> renders correctly with empty enrollment data 1`] = `
       <div
         className="col-sm-12 col-md"
       >
-        <h1>
+        <h1
+          className={null}
+        >
           Enterprise List
         </h1>
       </div>
@@ -254,7 +258,9 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
       <div
         className="col-sm-12 col-md"
       >
-        <h1>
+        <h1
+          className={null}
+        >
           Enterprise List
         </h1>
       </div>
@@ -382,7 +388,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-1/admin"
+                          href="/enterprise-1/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 1
@@ -396,7 +402,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-2/admin"
+                          href="/enterprise-2/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 2
@@ -410,7 +416,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-3/admin"
+                          href="/enterprise-3/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 3
@@ -424,7 +430,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-4/admin"
+                          href="/enterprise-4/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 4
@@ -438,7 +444,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-5/admin"
+                          href="/enterprise-5/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 5
@@ -452,7 +458,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-6/admin"
+                          href="/enterprise-6/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 6
@@ -466,7 +472,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-7/admin"
+                          href="/enterprise-7/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 7
@@ -480,7 +486,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-8/admin"
+                          href="/enterprise-8/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 8
@@ -494,7 +500,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-9/admin"
+                          href="/enterprise-9/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 9
@@ -508,7 +514,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-10/admin"
+                          href="/enterprise-10/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 10
@@ -522,7 +528,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-11/admin"
+                          href="/enterprise-11/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 11
@@ -536,7 +542,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-12/admin"
+                          href="/enterprise-12/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 12
@@ -550,7 +556,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-13/admin"
+                          href="/enterprise-13/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 13
@@ -564,7 +570,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-14/admin"
+                          href="/enterprise-14/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 14
@@ -578,7 +584,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-15/admin"
+                          href="/enterprise-15/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 15
@@ -592,7 +598,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-16/admin"
+                          href="/enterprise-16/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 16
@@ -606,7 +612,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-17/admin"
+                          href="/enterprise-17/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 17
@@ -620,7 +626,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-18/admin"
+                          href="/enterprise-18/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 18
@@ -634,7 +640,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-19/admin"
+                          href="/enterprise-19/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 19
@@ -648,7 +654,7 @@ exports[`<EnterpriseList /> renders correctly with enrollment data 1`] = `
                         className=""
                       >
                         <a
-                          href="/enterprise-20/admin"
+                          href="/enterprise-20/admin/learners"
                           onClick={[Function]}
                         >
                           Enterprise 20
@@ -753,7 +759,9 @@ exports[`<EnterpriseList /> renders correctly with error state 1`] = `
       <div
         className="col-sm-12 col-md"
       >
-        <h1>
+        <h1
+          className={null}
+        >
           Enterprise List
         </h1>
       </div>
@@ -896,7 +904,9 @@ exports[`<EnterpriseList /> renders correctly with loading state 1`] = `
       <div
         className="col-sm-12 col-md"
       >
-        <h1>
+        <h1
+          className={null}
+        >
           Enterprise List
         </h1>
       </div>
@@ -1009,7 +1019,9 @@ exports[`<EnterpriseList /> renders correctly with search query and empty enroll
       <div
         className="col-sm-12 col-md"
       >
-        <h1>
+        <h1
+          className={null}
+        >
           Enterprise List
         </h1>
       </div>
