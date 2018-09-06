@@ -89,6 +89,7 @@ class Admin extends React.Component {
       error,
       loading,
       downloadCsv,
+      getLearnerCourses,
       enterpriseId,
       lastUpdatedDate,
       csvLoading,
@@ -143,6 +144,11 @@ class Admin extends React.Component {
               }
             </div>
           </div>
+          <Button
+                label='# courses completed by learner'
+                onClick={() => getLearnerCourses(enterpriseId)}
+                className={['btn-link']}
+              />
           <div className="row mt-4">
             <div className="col">
               <H2>Full Report</H2>
@@ -204,6 +210,7 @@ Admin.defaultProps = {
 Admin.propTypes = {
   getDashboardAnalytics: PropTypes.func.isRequired,
   downloadCsv: PropTypes.func.isRequired,
+  getLearnerCourses: PropTypes.func.isRequired,
   enterpriseId: PropTypes.string,
   activeLearners: PropTypes.shape({
     past_week: PropTypes.number,

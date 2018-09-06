@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import fetchDashboardAnalytics from '../../data/actions/dashboardAnalytics';
-import { fetchCsv } from '../../data/actions/courseEnrollments';
+import { fetchCsv, fetchLearnerCourses } from '../../data/actions/courseEnrollments';
 import Admin from '../../components/Admin';
 
 const mapStateToProps = state => ({
@@ -23,6 +23,9 @@ const mapDispatchToProps = dispatch => ({
   },
   downloadCsv: (enterpriseId) => {
     dispatch(fetchCsv(enterpriseId));
+  },
+  getLearnerCourses: (enterpriseId) => {
+    dispatch(fetchLearnerCourses(enterpriseId));
   },
 });
 

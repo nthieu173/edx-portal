@@ -2,6 +2,9 @@ import {
   FETCH_COURSE_ENROLLMENTS_REQUEST,
   FETCH_COURSE_ENROLLMENTS_SUCCESS,
   FETCH_COURSE_ENROLLMENTS_FAILURE,
+  FETCH_LEARNER_COURSES_REQUEST,
+  FETCH_LEARNER_COURSES_SUCCESS,
+  FETCH_LEARNER_COURSES_FAILURE,
   FETCH_CSV_REQUEST,
   FETCH_CSV_SUCCESS,
   FETCH_CSV_FAILURE,
@@ -36,6 +39,26 @@ const courseEnrollments = (state = initialState, action) => {
         error: action.payload.error,
         enrollments: null,
       };
+    case FETCH_LEARNER_COURSES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case FETCH_LEARNER_COURSES_SUCCESS:
+      debugger;
+      return {
+        ...state,
+        loading: false,
+        enrollments: action.payload.enrollments,
+      };
+    case FETCH_LEARNER_COURSES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        enrollments: null,
+      };
     case FETCH_CSV_REQUEST:
       return {
         ...state,
@@ -43,6 +66,7 @@ const courseEnrollments = (state = initialState, action) => {
         csvError: null,
       };
     case FETCH_CSV_SUCCESS:
+      debugger;
       return {
         ...state,
         csvLoading: false,

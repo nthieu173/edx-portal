@@ -4,6 +4,9 @@ import {
   FETCH_COURSE_ENROLLMENTS_REQUEST,
   FETCH_COURSE_ENROLLMENTS_SUCCESS,
   FETCH_COURSE_ENROLLMENTS_FAILURE,
+  FETCH_LEARNER_COURSES_REQUEST,
+  FETCH_LEARNER_COURSES_SUCCESS,
+  FETCH_LEARNER_COURSES_FAILURE,
   FETCH_CSV_REQUEST,
   FETCH_CSV_SUCCESS,
   FETCH_CSV_FAILURE,
@@ -46,6 +49,37 @@ const fetchCourseEnrollments = (enterpriseId, options) => (
   }
 );
 
+const fetchLearnerCoursesRequest = () => ({ type: FETCH_LEARNER_COURSES_REQUEST });
+
+const fetchLearnerCoursesSuccess = enrollments => ({
+  type: FETCH_LEARNER_COURSES_SUCCESS,
+  payload: { enrollments },
+});
+
+const fetchLearnerCoursesFailure = error => ({
+  type: FETCH_LEARNER_COURSES_FAILURE,
+  payload: { error },
+});
+
+const fetchLearnerCourses = (enterpriseId) => (
+  (dispatch) => {
+    dispatch(fetchLearnerCoursesRequest());
+    return EnterpriseDataApiService.fetchLearnerCompletedCourseEnrollments(enterpriseId)
+      .then((response) => {
+        dispatch(fetchLearnerCoursesSuccess(response.data));
+      })
+      .catch((error) => {
+        // This endpoint returns a 404 if no data exists,
+        // so we convert it to an empty response here.
+        if (error.response.status === 404) {
+          dispatch(fetchLearnerCoursesSuccess(emptyEnrollments));
+          return;
+        }
+        dispatch(fetchLearnerCoursesFailure(error));
+      });
+  }
+);
+
 const fetchCsvRequest = () => ({ type: FETCH_CSV_REQUEST });
 const fetchCsvSuccess = () => ({
   type: FETCH_CSV_SUCCESS,
@@ -55,11 +89,14 @@ const fetchCsvFailure = error => ({
   payload: { error },
 });
 
-const fetchCsv = enterpriseId => (
+//fetchCourseEnrollmentsCsv
+//fetchLearnerCompletedCourseEnrollmentsCsv
+const fetchCsv = (enterpriseId, fetchMethod)=> (
   (dispatch) => {
     dispatch(fetchCsvRequest());
-    return EnterpriseDataApiService.fetchCourseEnrollmentsCsv(enterpriseId)
+    return EnterpriseDataApiService.fetchLearnerCompletedCourseEnrollmentsCsv(enterpriseId)
       .then((response) => {
+        debugger;
         saveAs(new Blob([response.data]), `${enterpriseId}_progress_report.csv`);
         dispatch(fetchCsvSuccess());
       })
@@ -70,5 +107,6 @@ const fetchCsv = enterpriseId => (
 );
 export {
   fetchCourseEnrollments,
+  fetchLearnerCourses,
   fetchCsv,
 };

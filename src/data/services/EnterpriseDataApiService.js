@@ -34,6 +34,32 @@ class EnterpriseDataApiService {
     });
   }
 
+  static fetchLearnerCompletedCourseEnrollments(enterpriseId, options) {
+    const queryParams = {
+      page: 1,
+      page_size: 50,
+      ...options,
+    };
+    const enrollmentsUrl = `${this.enterpriseBaseUrl}${enterpriseId}/learner_completed_course_enrollments/?${qs.stringify(queryParams)}`;
+    const jwtToken = getAccessToken();
+
+    return httpClient.get(enrollmentsUrl, {
+      headers: {
+        Authorization: `JWT ${jwtToken}`,
+      },
+    });
+  }
+
+  static fetchLearnerCompletedCourseEnrollmentsCsv(enterpriseId) {
+    const csvUrl = `${this.enterpriseBaseUrl}${enterpriseId}/learner_completed_course_enrollments.csv?no_page=true`;
+    const jwtToken = getAccessToken();
+    return httpClient.get(csvUrl, {
+      headers: {
+        Authorization: `JWT ${jwtToken}`,
+      },
+    });
+  }
+
   static fetchDashboardAnalytics(enterpriseId) {
     const analyticsUrl = `${this.enterpriseBaseUrl}${enterpriseId}/enrollments/overview/`;
     const jwtToken = getAccessToken();
