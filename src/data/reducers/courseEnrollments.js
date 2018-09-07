@@ -46,7 +46,6 @@ const courseEnrollments = (state = initialState, action) => {
         error: null,
       };
     case FETCH_LEARNER_COURSES_SUCCESS:
-      debugger;
       return {
         ...state,
         loading: false,
@@ -66,7 +65,6 @@ const courseEnrollments = (state = initialState, action) => {
         csvError: null,
       };
     case FETCH_CSV_SUCCESS:
-      debugger;
       return {
         ...state,
         csvLoading: false,

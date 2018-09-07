@@ -33,7 +33,7 @@ const fetchCourseEnrollmentsFailure = error => ({
 const fetchCourseEnrollments = (enterpriseId, options) => (
   (dispatch) => {
     dispatch(fetchCourseEnrollmentsRequest());
-    return EnterpriseDataApiService.fetchCourseEnrollments(enterpriseId, options)
+    return EnterpriseDataApiService.fetchData(`${enterpriseId}/enrollments`, options)
       .then((response) => {
         dispatch(fetchCourseEnrollmentsSuccess(response.data));
       })
@@ -64,7 +64,7 @@ const fetchLearnerCoursesFailure = error => ({
 const fetchLearnerCourses = (enterpriseId) => (
   (dispatch) => {
     dispatch(fetchLearnerCoursesRequest());
-    return EnterpriseDataApiService.fetchLearnerCompletedCourseEnrollments(enterpriseId)
+    return EnterpriseDataApiService.fetchData(`${enterpriseId}/learner_completed_course_enrollments`)
       .then((response) => {
         dispatch(fetchLearnerCoursesSuccess(response.data));
       })
@@ -89,14 +89,11 @@ const fetchCsvFailure = error => ({
   payload: { error },
 });
 
-//fetchCourseEnrollmentsCsv
-//fetchLearnerCompletedCourseEnrollmentsCsv
 const fetchCsv = (enterpriseId, fetchMethod)=> (
   (dispatch) => {
     dispatch(fetchCsvRequest());
-    return EnterpriseDataApiService.fetchLearnerCompletedCourseEnrollmentsCsv(enterpriseId)
+    return EnterpriseDataApiService.fetchData(`${enterpriseId}/learner_completed_course_enrollments.csv`, {'no_page': true})
       .then((response) => {
-        debugger;
         saveAs(new Blob([response.data]), `${enterpriseId}_progress_report.csv`);
         dispatch(fetchCsvSuccess());
       })
