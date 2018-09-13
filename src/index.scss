@@ -6,3 +6,78 @@ $fa-font-path: "~font-awesome/fonts";
 
 @import "~@edx/paragon/src/SearchField/SearchField";
 @import "~@edx/paragon/src/Pagination/Pagination";
+
+
+/*********** ALL THE BELOW CSS SHOULD BE MOVED TO CORRESPONDING COMPONENTS ***********/
+.wrapper {
+    // display: flex;
+    width: 100%;
+}
+
+#content.with-sidebar {
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#content.without-sidebar {
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #fff;
+    color: #fff;
+    transition: all 0.3s;
+
+    -moz-box-shadow:    -3px 0 5px 0 #555;
+    -webkit-box-shadow: -3px 0 5px 0 #555;
+    box-shadow:         -3px 0 5px 0 #555;
+}
+
+#sidebar.collapsed {
+    margin-left: -250px;
+}
+
+.sidebar-collapsed {
+    position: fixed;
+    z-index: 999;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #2699cf;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #2699cf;
+    background: #fff;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #2699cf;
+}

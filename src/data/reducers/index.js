@@ -6,6 +6,7 @@ import dashboardAnalytics from './dashboardAnalytics';
 import enterpriseList from './enterpriseList';
 import portalConfiguration from './portalConfiguration';
 import authentication from './authentication';
+import sidebar from './sidebar';
 
 const rootReducer = combineReducers({
   routerReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   dashboardAnalytics,
   portalConfiguration,
   authentication,
+  sidebar,
 });
 
 export default rootReducer;

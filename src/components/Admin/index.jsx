@@ -21,6 +21,8 @@ class Admin extends React.Component {
     if (enterpriseId) {
       this.props.getDashboardAnalytics(enterpriseId);
     }
+
+    this.props.enableSidebar();
   }
 
   componentDidUpdate(prevProps) {
