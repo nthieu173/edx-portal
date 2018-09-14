@@ -64,7 +64,7 @@ const fetchLearnerCoursesFailure = error => ({
 const fetchLearnerCourses = (enterpriseId) => (
   (dispatch) => {
     dispatch(fetchLearnerCoursesRequest());
-    return EnterpriseDataApiService.fetchData(`${enterpriseId}/learner_completed_course_enrollments`)
+    return EnterpriseDataApiService.fetchData(`${enterpriseId}/learner_completed_courses`)
       .then((response) => {
         dispatch(fetchLearnerCoursesSuccess(response.data));
       })
@@ -92,7 +92,7 @@ const fetchCsvFailure = error => ({
 const fetchCsv = (enterpriseId, fetchMethod)=> (
   (dispatch) => {
     dispatch(fetchCsvRequest());
-    return EnterpriseDataApiService.fetchData(`${enterpriseId}/learner_completed_course_enrollments.csv`, {'no_page': true})
+    return EnterpriseDataApiService.fetchData(`${enterpriseId}/learner_completed_courses.csv`, {'no_page': true})
       .then((response) => {
         saveAs(new Blob([response.data]), `${enterpriseId}_progress_report.csv`);
         dispatch(fetchCsvSuccess());
