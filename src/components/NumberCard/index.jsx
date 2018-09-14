@@ -101,7 +101,10 @@ class NumberCard extends React.Component {
     });
   }
 
-  handleDetailsActionClick() {
+  handleDetailsActionClick(event) {
+    if (event) {
+      event.target.click();
+    }
     this.toggleDetails();
   }
 
@@ -124,7 +127,7 @@ class NumberCard extends React.Component {
     if (NumberCard.isTriggerKey('CLOSE_DETAILS', event.key)) {
       this.toggleDetails();
     } else if (NumberCard.isTriggerKey('SELECT_ACTION', event.key)) {
-      this.handleDetailsActionClick();
+      this.handleDetailsActionClick(event);
     } else if (NumberCard.isTriggerKey('NAVIGATE_DOWN', event.key)) {
       this.setState({
         focusIndex: (focusIndex + 1) % detailActions.length,
@@ -152,7 +155,7 @@ class NumberCard extends React.Component {
         )}
         key={action.label}
         to={slug ? action.slug : `${removeTrailingSlash(match.url)}/${action.slug}`}
-        onClick={() => { this.handleDetailsActionClick(index); }}
+        onClick={() => { this.handleDetailsActionClick(); }}
         onKeyDown={event => this.handleDetailsActionKeyDown(event)}
       >
         <div className="d-flex justify-content-between align-items-center">
